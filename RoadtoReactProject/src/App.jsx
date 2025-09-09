@@ -21,21 +21,26 @@ const App = () => {
       objectID: 1,
     },
   ];
+  const searchHandler = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <>
       <div>Hello {title}</div>
-      <Search />
+
+      <Search onSearch={searchHandler} />
       <hr />
       <List list={data} />
     </>
   );
 };
 
-const Search = () => {
+const Search = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const HandleChange = (e) => {
     setSearchTerm(e.target.value);
+    props.onSearch(event);
   };
 
   return (
