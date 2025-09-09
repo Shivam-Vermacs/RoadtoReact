@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 
 const title = "Hello";
 const App = () => {
@@ -31,9 +32,10 @@ const App = () => {
 };
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const HandleChange = (e) => {
-    console.log(e);
-    console.log(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -41,6 +43,9 @@ const Search = () => {
       {" "}
       <label htmlFor="search">Search: </label>
       <input type="text" id="search" onChange={HandleChange} />
+      <p>
+        Search for <strong>{searchTerm}</strong>
+      </p>
     </div>
   );
 };
